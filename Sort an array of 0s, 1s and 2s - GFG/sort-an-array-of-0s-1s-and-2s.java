@@ -12,29 +12,54 @@ class Solution
 {
     public static void sort012(int a[], int n)
     {
-        int freqOf0=0;
-        int freqOf1=0;
-        int freqOf2=0;
+        //dutch flag algorithm to sor
         
-        for(int i=0;i<a.length;i++){
-            if(a[i]==0)
-                freqOf0+=1;
-            if(a[i]==1)
-                freqOf1+=1;
-            if(a[i]==2)
-                freqOf2+=1;        
-        }
+        // int freqOf0=0;
+        // int freqOf1=0;
+        // int freqOf2=0;
         
-        for(int i=0;i<freqOf0;i++){
-            a[i]=0;
-        }
+        // for(int i=0;i<a.length;i++){
+        //     if(a[i]==0)
+        //         freqOf0+=1;
+        //     if(a[i]==1)
+        //         freqOf1+=1;
+        //     if(a[i]==2)
+        //         freqOf2+=1;        
+        // }
         
-        for(int i=freqOf0;i<freqOf0+freqOf1;i++){
-            a[i]=1;
-        }
+        // for(int i=0;i<freqOf0;i++){
+        //     a[i]=0;
+        // }
         
-        for(int i=freqOf0+freqOf1;i<n;i++){
-            a[i]=2;
+        // for(int i=freqOf0;i<freqOf0+freqOf1;i++){
+        //     a[i]=1;
+        // }
+        
+        // for(int i=freqOf0+freqOf1;i<n;i++){
+        //     a[i]=2;
+        // }
+        
+        
+        int low=0;
+        int mid=0;
+        int high=n-1;
+        
+        
+        while(mid<=high){
+            if(a[mid]==0){
+                int temp=a[mid];
+                a[mid]=a[low];
+                a[low]=temp;
+                low++;
+                mid++;
+            }else if(a[mid]==1){
+                mid++;
+            }else{
+                int temp=a[mid];
+                a[mid]=a[high];
+                a[high]=temp;
+                high--;
+            }
         }
         
     }
